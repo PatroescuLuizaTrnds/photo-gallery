@@ -1,17 +1,61 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
+    <ion-title>Photo Gallery</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+<ion-content>
+  <ion-content>
+    <ion-grid>
+      <!-- <ion-row> -->
+        <!-- <ion-col size="6"
+    *ngFor="let photo of photoBuletin.photos; index as position">
+  <ion-img [src]="photo.webviewPath"
+           (click)="showActionSheet(photo, index)"></ion-img>
+        </ion-col> -->
+        <!-- <ion-object>{{photoBuletin.photos}} -->
+          <ion-row>
+          <div *ngIf="photoBuletin.photos[0];else other_content">
+          <ion-img [src]="photoBuletin.photos[0].webviewPath"
+           (click)="showActionSheet(photo, index)"></ion-img>
+          </div>
+          <ng-template #other_content>
+            No data.
+          </ng-template>
+        </ion-row>
+        <!-- </ion-object> -->
+      <!-- </ion-row> -->
+    </ion-grid>
+    
+      <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+        <ion-fab-button (click)="addPhotoBToGallery()">
+          <ion-icon name="camera"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+    </ion-content>
+    <ion-content>
+      <ion-grid>
+        <!-- <ion-row>
+          <ion-col size="6"
+      *ngFor="let photo of photoSelfie.photos; index as position">
+    <ion-img [src]="photo.webviewPath"
+             (click)="showActionSheet(photo, index)"></ion-img>
+          </ion-col> -->
+        <!-- </ion-row> -->
+        <ion-row>
+        <div *ngIf="photoBuletin.photos[1];else other_content2">
+          <ion-img [src]="photoBuletin.photos[1].webviewPath"
+           (click)="showActionSheet(photo, index)"></ion-img>
+          </div>
+          <ng-template #other_content2>
+            No data.
+          </ng-template>
+</ion-row>
+      </ion-grid>
+      <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+          <ion-fab-button (click)="addPhotoSToGallery()">
+            <ion-icon name="camera"></ion-icon>
+          </ion-fab-button>
+        </ion-fab>
+      </ion-content>
 </ion-content>
