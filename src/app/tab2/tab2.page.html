@@ -1,11 +1,13 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Photo Gallery</ion-title>
+    <ion-title>Identity</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <!-- <ion-text size="5px" margin-top="3px">Upload your id and take a selfie. If they are not matching, you can't create your account.</ion-text> -->
   <ion-content>
+    <ion-text size="5px" margin-top="3px">Upload your id.</ion-text>
     <ion-grid>
       <!-- <ion-row> -->
         <!-- <ion-col size="6"
@@ -20,20 +22,23 @@
            (click)="showActionSheet(photo, index)"></ion-img>
           </div>
           <ng-template #other_content>
-            No data.
+            <ion-text color="danger">
+            <h1>No data. Please upload your id.</h1>
+          </ion-text>
           </ng-template>
         </ion-row>
         <!-- </ion-object> -->
       <!-- </ion-row> -->
     </ion-grid>
     
-      <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+      <ion-fab vertical="bottom" horizontal="center" >
         <ion-fab-button (click)="addPhotoBToGallery()">
-          <ion-icon name="camera"></ion-icon>
+          <ion-icon name="cloud-upload-outline"></ion-icon>
         </ion-fab-button>
       </ion-fab>
     </ion-content>
     <ion-content>
+      <ion-text size="5px" margin-top="3px">Take a selfie</ion-text>
       <ion-grid>
         <!-- <ion-row>
           <ion-col size="6"
@@ -45,10 +50,12 @@
         <ion-row>
         <div *ngIf="photoBuletin.photos[1];else other_content2">
           <ion-img [src]="photoBuletin.photos[1].webviewPath"
-           (click)="showActionSheet(photo, index)"></ion-img>
+           (click)="showActionSheet(photo, 1)"></ion-img>
           </div>
-          <ng-template #other_content2>
-            No data.
+          <ng-template #other_content2  class="validator-error">
+            <ion-text color="danger">
+              <h1>No data. Please take a selfie.</h1>
+            </ion-text>
           </ng-template>
 </ion-row>
       </ion-grid>

@@ -19,23 +19,31 @@ export class PhotoService {
     this.platform = platform;
   }
 
-  public async addNewToGallery() {
-    // Take a photo
+  public async addNewToGallery(upload_type) {
+    // Take a photo for buletin
+  
+    if(upload_type == 0){
     const capturedPhoto = await Camera.getPhoto({
       resultType: CameraResultType.Uri,
-      source: CameraSource.Camera,
+      source: CameraSource.Photos,
       quality: 100
     });
-   // Save the picture and add it to photo collection
+    // Save the picture and add it to photo collection
   const savedImageFile = await this.savePicture(capturedPhoto);
-  // if(this.index)
-  //  this.photos.splice(1, savedImageFile);
-  if(this.index == 0){
-    this.photos.splice(0, 1,savedImageFile);
+  this.photos.splice(0, 1,savedImageFile);
   }
-  else{
-    this.photos.splice(1, 1,savedImageFile);
-  }
+    //Take photo for selfi 
+    if(upload_type == 1){
+      const capturedPhoto = await Camera.getPhoto({
+        resultType: CameraResultType.Uri,
+        source: CameraSource.Camera,
+        quality: 100
+      });
+      // Save the picture and add it to photo collection
+  const savedImageFile = await this.savePicture(capturedPhoto);
+  this.photos.splice(1, 1,savedImageFile);
+    }
+   
   // this.photos.unshift(savedImageFile);
   // this.photos.unshift(savedImageFile);
   Storage.set({

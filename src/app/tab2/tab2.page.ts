@@ -19,12 +19,12 @@ export class Tab2Page {
   }
   addPhotoBToGallery() {
     this.photoBuletin.index = 0;
-    this.photoBuletin.addNewToGallery();
+    this.photoBuletin.addNewToGallery(0);
 
   }
   addPhotoSToGallery() {
     this.photoSelfie.index = 1;
-    this.photoSelfie.addNewToGallery();
+    this.photoSelfie.addNewToGallery(1);
 
   }
 
@@ -36,8 +36,9 @@ export class Tab2Page {
         role: 'destructive',
         icon: 'trash',
         handler: () => {
+          console.log(position);
           this.photoBuletin.deletePicture(photo, position);
-          this.photoSelfie.deletePicture(photo, position);
+          // this.photoSelfie.deletePicture(photo, position);
         }
       }, {
         text: 'Cancel',
